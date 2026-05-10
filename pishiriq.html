@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Dilnoza Shirinliklari | Pishiriqlar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fff8f0 0%, #ffe6d5 100%);
+            color: #3e2a27;
+            scroll-behavior: smooth;
+        }
+
+        /* Animatsiyalar */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 140, 100, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(255, 140, 100, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 140, 100, 0); }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px 25px;
+        }
+
+        /* HEADER */
+        .hero {
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: rgba(255, 245, 235, 0.7);
+            border-radius: 60px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(2px);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #c06c4a, #e89b6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            display: inline-block;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #b45f3b;
+            border-top: 2px dashed #f3c9b0;
+            border-bottom: 2px dashed #f3c9b0;
+            display: inline-block;
+            padding: 10px 25px;
+            background: #fffaf5;
+            border-radius: 50px;
+        }
+
+        /* Mahsulotlar */
+        .section-title {
+            font-size: 2.4rem;
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title span {
+            background: #fff0e4;
+            padding: 0 20px;
+            border-radius: 40px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 45px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.02) translateY(-8px);
+            box-shadow: 0 28px 40px -15px rgba(156, 82, 36, 0.2);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 220px;
+            background: #fde9dd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-content {
+            padding: 20px 25px 25px;
+        }
+        .card-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .order-btn {
+            background: #e28b5e;
+            color: white;
+            border: none;
+            padding: 14px 0;
+            width: 100%;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .order-btn:hover {
+            background: #c46a3e;
+            transform: scale(0.98);
+            box-shadow: 0 5px 12px rgba(194, 97, 47, 0.3);
+        }
+
+        /* kontakt va telegram */
+        .contact-section {
+            background: #ffefde;
+            border-radius: 70px;
+            padding: 35px 30px;
+            margin: 55px 0 30px;
+            text-align: center;
+            animation: fadeInUp 0.7s ease-out;
+        }
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 50px;
+            padding: 20px 25px;
+            min-width: 240px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+        }
+        .phone-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: #fde5d4;
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 8px 0;
+        }
+        button.call-sms {
+            background: #2c5f2d;
+            margin: 6px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .delivery-info {
+            background: #f4cfb5;
+            border-radius: 50px;
+            padding: 15px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #27a5e7;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+        .telegram-link:hover {
+            background: #1f8bc2;
+            transform: scale(1.02);
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #a26e4e;
+        }
+
+        /* Modal - faqat narxni kelishish uchun */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #fff6ed;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 60px;
+            padding: 35px 30px;
+            text-align: center;
+            animation: fadeInUp 0.3s;
+            border: 2px solid #f3c9b0;
+        }
+        .modal-content h3 {
+            font-size: 2rem;
+            color: #c2612f;
+            margin-bottom: 20px;
+        }
+        .modal-content p {
+            font-size: 1.3rem;
+            margin: 20px 0;
+            background: #fff0e4;
+            padding: 15px;
+            border-radius: 50px;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 14px;
+            margin-top: 25px;
+            justify-content: center;
+        }
+        .modal-buttons button {
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .close-modal-btn {
+            background: #c46a3e;
+            color: white;
+        }
+        .call-now-btn {
+            background: #2c5f2d;
+            color: white;
+        }
+        .toastMsg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3e2a27;
+            color: #fff0e4;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            z-index: 1100;
+            display: none;
+            white-space: nowrap;
+        }
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+            .modal-content p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Sarlavha va animatsiya -->
+    <div class="hero">
+        <h1>🍰 Dilnoza Shirinliklari 🧁</h1>
+        <p>✨ Dilnoza Pishiriqlar saytiga xush kelibsiz! ✨</p>
+        <div style="margin-top: 20px; font-size: 1.2rem;">⭐ Eng mazali va chiroyli pishiriqlar ⭐</div>
+    </div>
+
+    <!-- Mahsulotlar (narxlar yo‘q) -->
+    <div class="section-title"><span>🍞 Bizning mahsulotlar</span></div>
+    <div class="products-grid" id="productsGrid"></div>
+
+    <!-- Biz bilan bog'lanish + Telegram + manzil -->
+    <div class="contact-section">
+        <h2>📞 Biz bilan bog‘laning</h2>
+        <div class="contact-flex">
+            <div class="contact-card">
+                <div>📱 Aloqa raqamlari:</div>
+                <div class="phone-number">+998 99 333 6815</div>
+                <div class="phone-number">+998 91 070 7338</div>
+                <div style="margin-top: 10px;">📍 Manzil: Qarshi shahar, Buyuk Turon mahallasi</div>
+            </div>
+            <div class="contact-card">
+                <div>✉️ Bog‘lanish usuli:</div>
+                <button class="call-sms" data-phone="+998993336815" data-action="call">📞 Telefon qilish</button>
+                <button class="call-sms" data-phone="+998910707338" data-action="call">📞 Telefon (2-raqam)</button>
+                <button class="call-sms" data-phone="+998993336815" data-action="sms">📨 SMS yozish</button>
+            </div>
+        </div>
+        <!-- Telegram -->
+        <div>
+            <a href="https://t.me/dilnoza_shirinlik_bot" target="_blank" class="telegram-link" id="telegramLink">
+                📩 Telegramda bog‘laning: @dilnoza_shirinlik_bot
+            </a>
+            <p style="margin-top: 12px;">*Telegram orqali ham bemalol buyurtma qabul qilamiz!</p>
+        </div>
+
+        <!-- Yetkazib berish ma'lumoti -->
+        <div class="delivery-info">
+            🚚 Yetkazib berish xizmatimiz hozircha yo‘q! <br> 
+            Iltimos, mahsulotlarni o‘ziz olib ketasiz. Qarshi shahar, Buyuk Turon mahallasi (qo‘ng‘iroq qiling).
+        </div>
+    </div>
+
+    <footer>⭐ Haqiqiy zavq bilan tayyorlangan pishiriqlar | Dilnoza Shirinliklari ⭐</footer>
+</div>
+
+<!-- Modal: "Aloqaga chiqing, narxini kelishamiz" xabari -->
+<div id="priceNegotiateModal" class="modal">
+    <div class="modal-content">
+        <h3>🍰 Mahsulot buyurtmasi</h3>
+        <p id="selectedProductName"></p>
+        <div style="font-size: 1.5rem; font-weight: bold; color: #b45f3b;">📞 Aloqaga chiqing, narxini kelishamiz!</div>
+        <div class="modal-buttons">
+            <button id="callNowFromModal" class="call-now-btn">📞 Hoziroq qo‘ng‘iroq qilish</button>
+            <button class="close-modal-btn" id="closeNegotiateModal">❌ Yopish</button>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9rem;">+998 99 333 6815 yoki +998 91 070 7338</p>
+    </div>
+</div>
+
+<div id="toastMsg" class="toastMsg"></div>
+
+<script>
+    // Mahsulotlar ro'yxati (narx umuman yo‘q)
+    const products = [
+        { id: 1, name: "🥐 Bulochka (kremli)", emoji: "🥐", bgHint: "🌾" },
+        { id: 2, name: "🍯 Medovik (asalim tort)", emoji: "🍯", bgHint: "🍰" },
+        { id: 3, name: "🍰 Napoleon (pufak)", emoji: "🍰", bgHint: "🥧" },
+        { id: 4, name: "🎂 Tug'ilgan kuni torti (muhallabi)", emoji: "🎂", bgHint: "🎈" },
+        { id: 5, name: "🌸 Tug'ilgan kun torti (mevali)", emoji: "🍓", bgHint: "🍒" }
+    ];
+
+    const productsGrid = document.getElementById("productsGrid");
+
+    // Mahsulot kartalarini chiqarish
+    function renderProducts() {
+        productsGrid.innerHTML = "";
+        products.forEach(prod => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <div class="card-img" style="background: #f8dfcf; font-size: 4rem;">
+                    ${prod.emoji} ${prod.bgHint}
+                </div>
+                <div class="card-content">
+                    <h3>${prod.name}</h3>
+                    <button class="order-btn" data-id="${prod.id}" data-name="${prod.name}">📦 Buyurtma berish</button>
+                </div>
+            `;
+            productsGrid.appendChild(card);
+        });
+
+        // Buyurtma berish tugmasi bosilganda faqat narx kelishish modalini ochish
+        document.querySelectorAll(".order-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const prodName = btn.getAttribute("data-name");
+                openNegotiateModal(prodName);
+            });
+        });
+    }
+
+    // Narxni kelishish modalini ochish
+    function openNegotiateModal(productName) {
+        const modal = document.getElementById("priceNegotiateModal");
+        const productSpan = document.getElementById("selectedProductName");
+        productSpan.innerHTML = `✅ Tanlangan mahsulot: <strong>${productName}</strong>`;
+        modal.style.display = "flex";
+    }
+
+    // Modaldan qo‘ng‘iroq qilish
+    document.getElementById("callNowFromModal")?.addEventListener("click", () => {
+        const phoneNumbers = ["+998993336815", "+998910707338"];
+        const randomPhone = phoneNumbers[Math.floor(Math.random() * phoneNumbers.length)];
+        window.location.href = `tel:${randomPhone}`;
+        showToast(`Qo‘ng‘iroq qilish: ${randomPhone}`);
+        document.getElementById("priceNegotiateModal").style.display = "none";
+    });
+
+    // Modalni yopish
+    document.getElementById("closeNegotiateModal")?.addEventListener("click", () => {
+        document.getElementById("priceNegotiateModal").style.display = "none";
+    });
+    window.addEventListener("click", (e) => {
+        const modal = document.getElementById("priceNegotiateModal");
+        if(e.target === modal) modal.style.display = "none";
+    });
+
+    // Kontakt blokidagi telefon va SMS tugmalari (ixtiyoriy)
+    document.querySelectorAll(".call-sms").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const phone = btn.getAttribute("data-phone");
+            const action = btn.getAttribute("data-action");
+            if(action === "sms") {
+                const body = encodeURIComponent("Dilnoza Shirinliklaridan buyurtma bermoqchiman. Narxni kelishamiz. Iltimos bog‘laning!");
+                window.location.href = `sms:${phone}?body=${body}`;
+                showToast(`SMS yozish: ${phone}`);
+            } else if(action === "call") {
+                window.location.href = `tel:${phone}`;
+                showToast(`Qo‘ng‘iroq qilish: ${phone}`);
+            }
+        });
+    });
+
+    // Telegram havola
+    const telegramBtn = document.getElementById("telegramLink");
+    if(telegramBtn) {
+        telegramBtn.addEventListener("click", (e) => {
+            showToast("Telegram orqali murojaat qiling, narxni kelishamiz ✅");
+        });
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById("toastMsg");
+        toast.innerText = msg;
+        toast.style.display = "block";
+        setTimeout(() => {
+            toast.style.display = "none";
+        }, 2800);
+    }
+
+    // Sahifa yuklanganda
+    window.addEventListener("load", () => {
+        renderProducts();
+        showToast("Dilnoza Pishiriqlar saytiga xush kelibsiz! 🌟");
+    });
+</script>
+</body>
+</html>
